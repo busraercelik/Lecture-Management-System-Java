@@ -130,4 +130,112 @@ public class LectureRepoImpl implements LectureRepo {
         return null;
     }
 
+    @Override
+    public void saveLecture(Lecture lecture) {
+            Statement stmt = null;
+            try{
+                //STEP 4: Execute a query
+                stmt = conn.createStatement();
+                String sql = "INSERT INTO lectures (`name`, `topic`, `teacher_name`, `total_time`)"
+                        +  "VALUES ('"+lecture.getName()+"', '"
+                        +lecture.getTopic()+"', '"
+                        +lecture.getTeacherName()+"', '"
+                        +lecture.getTotalTime()+"')";
+
+                stmt.executeUpdate(sql);
+
+                System.out.println("Inserted records into the table...");
+
+            }catch(SQLException se){
+                //Handle errors for JDBC
+                se.printStackTrace();
+            }catch(Exception e){
+                //Handle errors for Class.forName
+                e.printStackTrace();
+            }finally{
+                //finally block used to close resources
+                try{
+                    if(stmt!=null)
+                        conn.close();
+                }catch(SQLException se){
+                }// do nothing
+                try{
+                    if(conn!=null)
+                        conn.close();
+                }catch(SQLException se){
+                    se.printStackTrace();
+                }
+            }
+        }
+
+
+    @Override
+    public void saveLectures(List<Lecture> lectures) {
+        for (Lecture l:lectures) {
+            this.saveLecture(l);
+        }
+    }
+
+    @Override
+    public void updateLecture(Lecture lecture) {
+        Statement stmt = null;
+        try{
+            //STEP 4: Execute a query
+            stmt = conn.createStatement();
+            String sql = "UPDATE lectures " +
+                    "SET name='"+lecture.getName()+"' WHERE id="+lecture.getId();
+            stmt.executeUpdate(sql);
+        }catch(SQLException se){
+            //Handle errors for JDBC
+            se.printStackTrace();
+        }catch(Exception e){
+            //Handle errors for Class.forName
+            e.printStackTrace();
+        }finally{
+            //finally block used to close resources
+            try{
+                if(stmt!=null)
+                    conn.close();
+            }catch(SQLException se){
+            }// do nothing
+            try{
+                if(conn!=null)
+                    conn.close();
+            }catch(SQLException se){
+                se.printStackTrace();
+            }//end finally try
+        }//end try
+    }
+
+    @Override
+    public void deleteLecture(Lecture lecture) {
+        Statement stmt = null;
+        try{
+            stmt = conn.createStatement();
+            String sql = "DELETE FROM lectures " +
+                    "WHERE id ="+lecture.getId();
+            stmt.executeUpdate(sql);
+
+        }catch(SQLException se){
+            //Handle errors for JDBC
+            se.printStackTrace();
+        }catch(Exception e){
+            //Handle errors for Class.forName
+            e.printStackTrace();
+        }finally{
+            //finally block used to close resources
+            try{
+                if(stmt!=null)
+                    conn.close();
+            }catch(SQLException se){
+            }// do nothing
+            try{
+                if(conn!=null)
+                    conn.close();
+            }catch(SQLException se){
+                se.printStackTrace();
+            }
+        }
+    }
+
 }
