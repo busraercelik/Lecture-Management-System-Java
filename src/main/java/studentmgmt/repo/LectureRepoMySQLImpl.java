@@ -6,7 +6,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class LectureRepoImpl implements LectureRepo {
+public class LectureRepoMySQLImpl implements LectureRepo {
     // JDBC driver name and database URL
     //static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
     static final String DB_URL = "jdbc:mysql://localhost/lecture-management-system";
@@ -16,7 +16,7 @@ public class LectureRepoImpl implements LectureRepo {
     static final String PASS = "root";
     Connection conn = null;
 
-    public LectureRepoImpl(){
+    public LectureRepoMySQLImpl(){
         try {
             //STEP 3: Open a connection
             conn = DriverManager.getConnection(DB_URL, USER, PASS);

@@ -3,7 +3,7 @@ package studentmgmt;
 //STEP 1. Import required packages
 import studentmgmt.models.Lecture;
 import studentmgmt.repo.LectureRepo;
-import studentmgmt.repo.LectureRepoImpl;
+import studentmgmt.repo.LectureRepoMySQLImpl;
 import studentmgmt.services.LectureService;
 import studentmgmt.services.LectureServiceImpl;
 
@@ -11,7 +11,7 @@ public class AppRunner {
 
     public static void main(String[] args) {
         //dependency injection : TODO read about it
-        LectureRepo lec = new LectureRepoImpl();
+        LectureRepo lec = new LectureRepoMySQLImpl();
         LectureService lectureService = new LectureServiceImpl(lec);
 
         System.out.println(lectureService.getAllTeacherNames());

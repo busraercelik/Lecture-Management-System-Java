@@ -21,4 +21,5 @@ public interface LectureRepo {
     void saveLectures(List<Lecture> lectures);
     void updateLecture(Lecture lecture);
     void deleteLecture(Lecture lecture);
+    
 }
