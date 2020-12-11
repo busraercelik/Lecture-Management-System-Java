@@ -1,2 +1,4 @@
-studentmgmt\AppRunner.class
+studentmgmt\repo\LectureRepoMySQLImpl.class
+studentmgmt\repo\LectureRepoMongoDBImpl.class
 studentmgmt\models\Lecture.class
+studentmgmt\AppRunner.class

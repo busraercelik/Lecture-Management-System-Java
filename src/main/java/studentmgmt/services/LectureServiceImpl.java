@@ -1,15 +1,19 @@
 package studentmgmt.services;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import studentmgmt.models.Lecture;
 import studentmgmt.repo.LectureRepo;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Service
 public class LectureServiceImpl implements LectureService {
 
     LectureRepo lecRepo;
-
+    // when you want spring to inject an object/instance into a field then you use @Autowired
+    @Autowired
     public LectureServiceImpl(LectureRepo lecRepo) {
         this.lecRepo = lecRepo;
     }

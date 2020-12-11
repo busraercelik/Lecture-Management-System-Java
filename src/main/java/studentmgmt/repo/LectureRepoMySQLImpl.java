@@ -1,11 +1,13 @@
 package studentmgmt.repo;
 
+import org.springframework.stereotype.Component;
 import studentmgmt.models.Lecture;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@Component
 public class LectureRepoMySQLImpl implements LectureRepo {
     // JDBC driver name and database URL
     //static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
