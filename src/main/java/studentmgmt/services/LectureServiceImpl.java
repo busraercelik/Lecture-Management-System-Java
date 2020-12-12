@@ -45,4 +45,28 @@ public class LectureServiceImpl implements LectureService {
         }
         return allTopicNames;
     }
+
+    @Override
+    public void saveLecture(Lecture lecture) {
+          lecRepo.saveLecture(lecture);
+    }
+
+    @Override
+    public List<Lecture> getAllLectures() {
+        return lecRepo.getAllLectures();
+    }
+
+    @Override
+    public Lecture getLectureById(int id) {
+        return lecRepo.getLectureById(id);
+    }
+
+    @Override
+    public void updateNameInLectureById(int id, String name) {
+        Lecture updatedLecture=getLectureById(id);
+        updatedLecture.setName(name);
+        lecRepo.updateLecture(updatedLecture);
+    }
+
+
 }

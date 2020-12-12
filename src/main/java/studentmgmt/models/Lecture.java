@@ -1,5 +1,7 @@
 package studentmgmt.models;
 
+import studentmgmt.services.LectureService;
+
 import java.util.Objects;
 
 public class Lecture {
